@@ -105,18 +105,19 @@ for funNum = 1:23 % fun#1 to fun#23
             jumping_rate = jumping_rate_max - itr * ((jumping_rate_max - jumping_rate_min) / Max_iter);
            % swarm looking to go away from killer "free risk started too high " 
             [sorted_objctive, sorted_indexes] = sort(Fitness);
-         
-            current_solution = find(sorted_indexes == i);  % possition of the current solution 
-         
-            near_solution_postion = current_solution - 1;  % 
-            if near_solution_postion == 0
-                near_solution_postion = 1;
-            end
-            near_solution = sorted_indexes(near_solution_postion); 
-         
-            [cost, best_solution_Index] = min(ObjVal);
-         
+
             for i = 1:PopSize,
+	             
+		current_solution = find(sorted_indexes == i);  % possition of the current solution 
+
+		near_solution_postion = current_solution - 1;  % 
+		if near_solution_postion == 0
+			near_solution_postion = 1;
+		end
+		near_solution = sorted_indexes(near_solution_postion); 
+
+		[cost, best_solution_Index] = min(ObjVal);
+
              
                 NewSol = swarm(i, :);
              
